@@ -330,12 +330,22 @@
                     </div>
                     
                     <div class="card" onclick="openProject('portfolio')">
-                        <div class="card-img-placeholder">🌐</div>
+                        <img src="images/website.png" alt="website" style="width:100%; height:180px; object-fit:cover;">
                         <div class="card-content">
                             <h3 class="card-title">Portfolio Site</h3>
                             <p class="card-desc">The website you are looking at right now.</p>
                         </div>
                     </div>
+
+                    <a href="https://github.com/ido745" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="card" style="border-color: var(--accent-color); justify-content: center; align-items: center; text-align: center;">
+                            <div style="font-size: 4rem;">🐙</div>
+                            <div class="card-content" style="flex-grow: 0;">
+                                <h3 class="card-title">My GitHub</h3>
+                                <p class="card-desc" style="color: var(--accent-color);">See all repositories ↗</p>
+                            </div>
+                        </div>
+                    </a>
 
                 </div>
             </div>
@@ -347,7 +357,7 @@
                 <div class="scroller">
                     
                     <div class="card" onclick="openProject('doodle')">
-                        <img src="images/doodleGuesser.png" alt="OpenGL" style="width:100%; height:180px; object-fit:cover;">
+                        <img src="images/doodleGuesser.png" alt="doodle" style="width:100%; height:180px; object-fit:cover;">
                         <div class="card-content">
                             <h3 class="card-title">Doodle Guesser</h3>
                             <p class="card-desc">A CNN to recognize doodles.</p>
@@ -355,7 +365,7 @@
                     </div>
                     
                     <div class="card" onclick="openProject('drive')">
-                        <div class="card-img-placeholder">🗄️</div>
+                        <img src="images/drive.webp" alt="drive" style="width:100%; height:180px; object-fit:cover;">
                         <div class="card-content">
                             <h3 class="card-title">Google Drive Copy</h3>
                             <p class="card-desc">A complete google drive project (ongoing).</p>
@@ -406,8 +416,8 @@
                 </div>
                 <div class="footer-col">
                     <h3>Contact</h3>
-                    <div class="contact-item">📧 email@example.com</div>
-                    <div class="contact-item">📞 +123 456 7890</div>
+                    <div class="contact-item">📧 dodomaimon@gmail.com</div>
+                    <div class="contact-item">📞 +972 556 844 806</div>
                 </div>
             </div>
         </footer>
@@ -419,9 +429,22 @@
             <div class="project-header">
                 <h1>ChessAI Engine</h1>
                 <p>C++ engine capable of 2M nodes/sec.</p>
-                <a href="projects/ChessAI-main.zip" class="download-btn" download>Download Release</a>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="projects/chess.zip" class="download-btn" download>Download Release</a>
+                    <a href="https://github.com/ido745/ChessAI" target="_blank" class="download-btn" style="background-color: #333; color: white;">
+                        View on GitHub ↗
+                    </a>
+                </div>
             </div>
             <div class="project-content">
+                <h2>How to Run</h2>
+                <p>To run the engine:</p>
+                <ol style="margin-left: 20px; color: #cbd5e1; margin-bottom: 2rem;">
+                    <li>Download the source code or release.</li>
+                    <li>Locate the folder <strong>Windows_builds</strong>.</li>
+                    <li>Open it and run <strong>ChessAI.exe</strong>.</li>
+                </ol>
+                
                 <h2>Project Overview</h2>
                 <p>This is a high-performance Chess Engine written in C++. It utilizes advanced bitwise operations for board representation and implements a Minimax algorithm enhanced with Alpha-Beta pruning.</p>
                 <h2>Key Features</h2>
@@ -440,19 +463,19 @@
             <div class="project-header">
                 <h1>OpenGL Rendering Engine</h1>
                 <p>Real-time physics and lighting simulation.</p>
-                
                 <a href="https://github.com/ido745/LearnOpenGL" target="_blank" class="download-btn" style="background-color: #333; color: white;">
                     View on GitHub ↗
                 </a>
             </div>
             <div class="project-content">
                 <h2>Project Overview</h2>
-                <p>A custom 3D game engine built from scratch using C++ and OpenGL. The goal was to understand the graphics pipeline and shader programming.</p>
+                <p>A custom 3D game engine built from scratch using C++ and OpenGL. The goal was to understand the graphics pipeline, shader programming (GLSL), and vector mathematics.</p>
+                
                 <h2>Key Features</h2>
                 <ul>
-                    <li>Phong and Blinn-Phong lighting models.</li>
-                    <li>Shadow Mapping.</li>
-                    <li>Model loading (.obj) and texture mapping.</li>
+                    <li><strong>Phong Lighting Model:</strong> Implemented realistic illumination using Ambient, Diffuse, and Specular lighting components.</li>
+                    <li><strong>Material System:</strong> Created a custom material structure to define specific surface properties (shininess, light reaction).</li>
+                    <li><strong>Texture Mapping:</strong> Integrated support for Diffuse and Ambient maps to add detail and lighting occlusion to 3D objects.</li>
                 </ul>
             </div>
         </div>
@@ -464,7 +487,9 @@
             <div class="project-header">
                 <h1>Portfolio Website</h1>
                 <p>A responsive SPA (Single Page Application) built with vanilla JS.</p>
-                <a href="projects/portfolio.zip" class="download-btn" download>Download Source Code</a>
+                <a href="https://github.com/ido745/portfolioWebsite-ido" target="_blank" class="download-btn" style="background-color: #333; color: white;">
+                    View on GitHub ↗
+                </a>
             </div>
             <div class="project-content">
                 <h2>Project Overview</h2>
@@ -481,10 +506,8 @@
             <div class="project-header">
                 <h1>Doodle Guesser</h1>
                 <p>A Convolutional Neural Network (CNN) that recognizes drawings.</p>
-                
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <a href="projects/doodle.zip" class="download-btn" download>Download Model</a>
-                    
                     <a href="https://github.com/ido745/doodleGuesser" target="_blank" class="download-btn" style="background-color: #333; color: white;">
                         View on GitHub ↗
                     </a>
@@ -496,7 +519,7 @@
                 <h2>Key Features</h2>
                 <ul>
                     <li>Trained on over 100,000 images.</li>
-                    <li>High accuracy on 10 distinct classes.</li>
+                    <li>High accuracy on 35 distinct classes.</li>
                     <li>Python Flask backend with a JS frontend.</li>
                 </ul>
             </div>
@@ -509,8 +532,8 @@
             <div class="project-header">
                 <h1>Google Drive Replica</h1>
                 <p>A full-stack file storage system.</p>
-                <a href="projects/drive.zip" class="download-btn" download>Download Source</a>
-            </div>
+                <p style="color: var(--accent-color); margin-top: 10px;">🚧 Ongoing Project</p>
+                </div>
             <div class="project-content">
                 <h2>Project Overview</h2>
                 <p>An ongoing project to replicate the core features of Google Drive. It handles file uploads, folder structures, and user authentication.</p>
@@ -546,36 +569,82 @@
     </div>
 
     <script>
-        // 1. Navigation
-        function openProject(id) {
+        // --- HELPER: Handles the Visual Switching Only ---
+        function switchView(viewName) {
+            // Hide everything first
             document.getElementById('home-view').style.display = 'none';
-            
-            // Try to find the specific project view
-            let view = document.getElementById('project-' + id);
-            
-            // If not found, show default
-            if(!view) {
-                view = document.getElementById('project-default');
-            }
-            
-            view.style.display = 'block';
-            window.scrollTo(0,0);
-        }
-
-        function closeProject() {
             document.querySelectorAll('.project-view').forEach(v => v.style.display = 'none');
-            document.getElementById('home-view').style.display = 'block';
+
+            // Show the requested view
+            if (viewName === 'home') {
+                document.getElementById('home-view').style.display = 'block';
+            } else {
+                // Try to find the specific project view
+                let projectEl = document.getElementById('project-' + viewName);
+                
+                // If not found (e.g. invalid ID), show default or fallback to home
+                if (projectEl) {
+                    projectEl.style.display = 'block';
+                } else {
+                    // Fallback for missing IDs
+                    document.getElementById('project-default').style.display = 'block';
+                }
+            }
+            window.scrollTo(0, 0);
         }
 
-        // 2. PDF Modal
+        // --- 1. NAVIGATION (Clicking a Card) ---
+        function openProject(id) {
+            // 1. Change the UI
+            switchView(id);
+            
+            // 2. Add a new entry to the Browser History
+            // This makes the "Back" button work!
+            history.pushState({ view: id }, null, '#' + id);
+        }
+
+        // --- 2. CLOSING (Clicking "Back to Home" button) ---
+        function closeProject() {
+            // If we have history, just go back (simulating the browser back button)
+            if (history.state) {
+                history.back();
+            } else {
+                // If the user landed directly on a project page, manually go home
+                switchView('home');
+                history.replaceState(null, null, ' '); // Clear URL hash
+            }
+        }
+
+        // --- 3. BROWSER BACK BUTTON LISTENER ---
+        // This detects when the user hits the Chrome/Edge "Back" arrow
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.view) {
+                // If history says we are on a project, show it
+                switchView(event.state.view);
+            } else {
+                // If history is empty (or null), we are back at Home
+                switchView('home');
+            }
+        });
+
+        // --- 4. HANDLE REFRESH / DIRECT LINKS ---
+        // If the user refreshes the page while on #chess, stay on chess
+        window.addEventListener('load', () => {
+            const hash = location.hash.replace('#', '');
+            if (hash) {
+                switchView(hash);
+            } else {
+                switchView('home');
+            }
+        });
+
+        // --- PDF Modal Logic (Unchanged) ---
         function openPdf(file, title) {
             const modal = document.getElementById('pdf-modal');
             const frame = document.getElementById('pdf-frame');
-            
             document.getElementById('modal-title').innerText = title;
             document.getElementById('download-link').href = file;
             frame.src = file; 
-
             modal.style.display = "flex";
         }
 
@@ -588,16 +657,15 @@
             if (e.target == document.getElementById('pdf-modal')) closePdf();
         }
 
-        // 3. Scroll Animations
+        // --- Visual Effects (Particles & Scroll) ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('is-visible');
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
 
-        // 4. Background Particles
+        // Background Particles
         const canvas = document.getElementById('canvas-bg');
         const ctx = canvas.getContext('2d');
         let width, height, particles = [];
