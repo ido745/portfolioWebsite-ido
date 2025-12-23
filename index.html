@@ -265,6 +265,17 @@
 
         .project-content { max-width: 800px; font-size: 1.1rem; color: #cbd5e1; }
         .project-content h2 { color: var(--text-main); margin-top: 2rem; margin-bottom: 1rem; }
+        .tech-tag {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
 
         /* --- MODAL --- */
         .modal {
@@ -317,7 +328,7 @@
                         <img src="images/chess.jpg" alt="Chess Game" style="width:100%; height:180px; object-fit:cover;">
                         <div class="card-content">
                             <h3 class="card-title">ChessAI</h3>
-                            <p class="card-desc">Advanced chess engine with Alpha-Beta pruning.</p>
+                            <p class="card-desc">High-performance C# engine using bitboards and Alpha-Beta pruning.</p>
                         </div>
                     </div>
                     
@@ -360,7 +371,7 @@
                         <img src="images/doodleGuesser.png" alt="doodle" style="width:100%; height:180px; object-fit:cover;">
                         <div class="card-content">
                             <h3 class="card-title">Doodle Guesser</h3>
-                            <p class="card-desc">A CNN to recognize doodles.</p>
+                            <p class="card-desc">A CNN to recognize drawings in real-time.</p>
                         </div>
                     </div>
                     
@@ -368,7 +379,7 @@
                         <img src="images/drive.webp" alt="drive" style="width:100%; height:180px; object-fit:cover;">
                         <div class="card-content">
                             <h3 class="card-title">Google Drive Copy</h3>
-                            <p class="card-desc">A complete google drive project (ongoing).</p>
+                            <p class="card-desc">Collaborative full-stack file system (C++ backend).</p>
                         </div>
                     </div>
 
@@ -412,7 +423,7 @@
             <div class="container about-grid">
                 <div class="footer-col">
                     <h3>About Me</h3>
-                    <p>I am a passionate CS student. I love building systems from scratch, solving complex algorithmic problems, and exploring the depths of computer graphics and AI.</p>
+                    <p>I am a passionate CS student. I love building systems from scratch, solving complex algorithmic problems, and exploring the depths of computer graphics and AI. Working part time in BI and data science.</p>
                 </div>
                 <div class="footer-col">
                     <h3>Contact</h3>
@@ -428,8 +439,14 @@
             <div class="view-nav"><button class="back-btn" onclick="closeProject()">← Back to Home</button></div>
             <div class="project-header">
                 <h1>ChessAI Engine</h1>
-                <p>C++ engine capable of reaching depth 10 and above.</p>
-                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <p>A sophisticated chess engine written in C#, utilizing advanced data structures and search algorithms.</p>
+                <div style="margin-top: 15px;">
+                    <span class="tech-tag">C#</span>
+                    <span class="tech-tag">Bitboards</span>
+                    <span class="tech-tag">Minimax</span>
+                    <span class="tech-tag">Alpha-Beta Pruning</span>
+                </div>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
                     <a href="projects/ChessAI-main.zip" class="download-btn" download>Download Release</a>
                     <a href="https://github.com/ido745/ChessAI" target="_blank" class="download-btn" style="background-color: #333; color: white;">
                         View on GitHub ↗
@@ -437,22 +454,23 @@
                 </div>
             </div>
             <div class="project-content">
+                <h2>Technical Implementation</h2>
+                <p>This engine focuses on speed and search efficiency. Instead of simple arrays, it uses <strong>Bitboards</strong> to represent the board, allowing for extremely fast move generation using bitwise operations.</p>
+                
+                <h2>Search & Optimization</h2>
+                <ul>
+                    <li><strong>Minimax with Alpha-Beta Pruning:</strong> Dramatically reduces the number of nodes evaluated.</li>
+                    <li><strong>Transposition Tables:</strong> Implemented using <strong>Zobrist Hashing</strong> to store and reuse evaluation results of previously seen positions.</li>
+                    <li><strong>Move Ordering:</strong> Uses <strong>MVV-LVA</strong> (Most Valuable Victim - Least Valuable Aggressor) and Killer Moves to ensure the best moves are searched first, maximizing pruning.</li>
+                    <li><strong>Iterative Deepening:</strong> Allows the engine to return the best found move within a specific time limit.</li>
+                </ul>
+
                 <h2>How to Run</h2>
-                <p>To run the engine:</p>
                 <ol style="margin-left: 20px; color: #cbd5e1; margin-bottom: 2rem;">
                     <li>Download the source code or release.</li>
                     <li>Locate the folder <strong>Windows_builds</strong>.</li>
-                    <li>Open it and run <strong>ChessAI.exe</strong>.</li>
+                    <li>Run <strong>ChessAI.exe</strong>.</li>
                 </ol>
-                
-                <h2>Project Overview</h2>
-                <p>This is a high-performance Chess Engine written in C++. It utilizes advanced bitwise operations for board representation and implements a Minimax algorithm enhanced with Alpha-Beta pruning.</p>
-                <h2>Key Features</h2>
-                <ul>
-                    <li>Bitboard representation for speed.</li>
-                    <li>Move ordering (MVV-LVA).</li>
-                    <li>Transposition tables using Zobrist Hashing.</li>
-                </ul>
             </div>
         </div>
     </div>
@@ -462,20 +480,22 @@
             <div class="view-nav"><button class="back-btn" onclick="closeProject()">← Back to Home</button></div>
             <div class="project-header">
                 <h1>OpenGL Rendering Engine</h1>
-                <p>Real-time physics and lighting simulation.</p>
-                <a href="https://github.com/ido745/LearnOpenGL" target="_blank" class="download-btn" style="background-color: #333; color: white;">
-                    View on GitHub ↗
-                </a>
+                <p>Real-time graphics and lighting simulation.</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="https://github.com/ido745/LearnOpenGL" target="_blank" class="download-btn" style="background-color: #333; color: white;">
+                        View on GitHub ↗
+                    </a>
+                </div>
             </div>
             <div class="project-content">
                 <h2>Project Overview</h2>
-                <p>A custom 3D game engine built from scratch using C++ and OpenGL. The goal was to understand the graphics pipeline, shader programming (GLSL), and vector mathematics.</p>
+                <p>A custom 3D game engine built using C++ and OpenGL, following the LearnOpenGL tutorial online. The goal was to understand the graphics pipeline, shader programming (GLSL), and vector mathematics.</p>
                 
                 <h2>Key Features</h2>
                 <ul>
                     <li><strong>Phong Lighting Model:</strong> Implemented realistic illumination using Ambient, Diffuse, and Specular lighting components.</li>
-                    <li><strong>Material System:</strong> Created a custom material structure to define specific surface properties (shininess, light reaction).</li>
-                    <li><strong>Texture Mapping:</strong> Integrated support for Diffuse and Ambient maps to add detail and lighting occlusion to 3D objects.</li>
+                    <li><strong>Material System:</strong> Created a custom material structure to define specific surface properties.</li>
+                    <li><strong>Texture Mapping:</strong> Integrated support for Diffuse and Ambient maps.</li>
                 </ul>
             </div>
         </div>
@@ -505,8 +525,14 @@
             <div class="view-nav"><button class="back-btn" onclick="closeProject()">← Back to Home</button></div>
             <div class="project-header">
                 <h1>Doodle Guesser</h1>
-                <p>A Convolutional Neural Network (CNN) that recognizes drawings.</p>
-                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <p>A deep learning application that identifies hand-drawn doodles in real-time.</p>
+                <div style="margin-top: 15px;">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">Keras</span>
+                    <span class="tech-tag">Flask</span>
+                </div>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
                     <a href="projects/doodleGuesser-main.zip" class="download-btn" download>Download Model</a>
                     <a href="https://github.com/ido745/doodleGuesser" target="_blank" class="download-btn" style="background-color: #333; color: white;">
                         View on GitHub ↗
@@ -514,14 +540,23 @@
                 </div>
             </div>
             <div class="project-content">
-                <h2>Project Overview</h2>
-                <p>This project uses TensorFlow and Keras to train a model on the Google "Quick, Draw!" dataset. It allows users to draw on a canvas and the AI guesses the object in real-time.</p>
+                <h2>Deep Learning Architecture</h2>
+                <p>The core of this project is a <strong>Convolutional Neural Network (CNN)</strong> trained on a subset of the Google "Quick, Draw!" dataset. The model is capable of recognizing 35 distinct categories with 94.10% test accuracy.</p>
+                
                 <h2>Key Features</h2>
                 <ul>
-                    <li>Trained on over 100,000 images.</li>
-                    <li>High accuracy on 35 distinct classes.</li>
-                    <li>Python Flask backend with a JS frontend.</li>
+                    <li><strong>Large Scale Training:</strong> Trained on over 100,000 images using data augmentation techniques.</li>
+                    <li><strong>Real-time Inference:</strong> Users draw on an HTML5 Canvas, and the image is pre-processed and sent to a Python Flask backend for prediction.</li>
+                    <li><strong>Canvas Pre-processing:</strong> Includes custom logic to normalize and resize user input to match the 28x28 grayscale training format.</li>
                 </ul>
+
+                <h2>Tech Stack</h2>
+                <p>Developed using <strong>Python (Keras/TensorFlow)</strong> for the AI components and <strong>Flask</strong> to bridge the gap between the model and the front-end interface.</p>
+
+                <h2>List of categories</h2>
+                <p>apple, arm, banana, baseball bat, beard, bed, bicycle,
+        book, bowtie, bridge, camera, car, cat, chair, circle, cloud, computer, crown, cup, dog, door, 
+        eye, face, flower, fork, guitar, hamburger, house, ice cream, key, laptop, leaf, light bulb, lightning, line.</p>
             </div>
         </div>
     </div>
@@ -531,17 +566,17 @@
             <div class="view-nav"><button class="back-btn" onclick="closeProject()">← Back to Home</button></div>
             <div class="project-header">
                 <h1>Google Drive Replica</h1>
-                <p>A full-stack file storage system.</p>
-                <p style="color: var(--accent-color); margin-top: 10px;">🚧 Ongoing Project</p>
+                <p>A full-stack file storage and management system.</p>
+                <p style="color: var(--accent-color); margin-top: 10px; font-weight: bold;">👥 University Group Project (In Progress)</p>
                 </div>
             <div class="project-content">
                 <h2>Project Overview</h2>
-                <p>An ongoing project to replicate the core features of Google Drive. It handles file uploads, folder structures, and user authentication.</p>
+                <p>Developed as a collaborative <strong>group project</strong> for university, this application replicates the core features of cloud storage providers. It focuses on secure file handling, user permissions, and directory structures.</p>
                 <h2>Key Features</h2>
                 <ul>
-                    <li>File Upload/Download with progress bars.</li>
-                    <li>Folder creation and nested directory support.</li>
-                    <li>User Authentication (Login/Register).</li>
+                    <li><strong>Scalable Backend:</strong> Built with C++ to handle high-performance file I/O operations.</li>
+                    <li><strong>Authentication:</strong> Secure user registration and login system with token-based session management.</li>
+                    <li><strong>File System:</strong> Support for nested directories, file metadata tracking, and intuitive upload/download progress.</li>
                 </ul>
             </div>
         </div>
@@ -595,40 +630,30 @@
 
         // --- 1. NAVIGATION (Clicking a Card) ---
         function openProject(id) {
-            // 1. Change the UI
             switchView(id);
-            
-            // 2. Add a new entry to the Browser History
-            // This makes the "Back" button work!
             history.pushState({ view: id }, null, '#' + id);
         }
 
         // --- 2. CLOSING (Clicking "Back to Home" button) ---
         function closeProject() {
-            // If we have history, just go back (simulating the browser back button)
             if (history.state) {
                 history.back();
             } else {
-                // If the user landed directly on a project page, manually go home
                 switchView('home');
-                history.replaceState(null, null, ' '); // Clear URL hash
+                history.replaceState(null, null, ' '); 
             }
         }
 
         // --- 3. BROWSER BACK BUTTON LISTENER ---
-        // This detects when the user hits the Chrome/Edge "Back" arrow
         window.addEventListener('popstate', function(event) {
             if (event.state && event.state.view) {
-                // If history says we are on a project, show it
                 switchView(event.state.view);
             } else {
-                // If history is empty (or null), we are back at Home
                 switchView('home');
             }
         });
 
         // --- 4. HANDLE REFRESH / DIRECT LINKS ---
-        // If the user refreshes the page while on #chess, stay on chess
         window.addEventListener('load', () => {
             const hash = location.hash.replace('#', '');
             if (hash) {
@@ -638,7 +663,7 @@
             }
         });
 
-        // --- PDF Modal Logic (Unchanged) ---
+        // --- PDF Modal Logic ---
         function openPdf(file, title) {
             const modal = document.getElementById('pdf-modal');
             const frame = document.getElementById('pdf-frame');
@@ -657,7 +682,7 @@
             if (e.target == document.getElementById('pdf-modal')) closePdf();
         }
 
-        // --- Visual Effects (Particles & Scroll) ---
+        // --- Visual Effects ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('is-visible');
