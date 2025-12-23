@@ -92,16 +92,86 @@
             60% {transform: translateY(-5px);}
         }
 
-        /* --- SCROLLERS --- */
+        /* --- GRID SYSTEM & SHOW MORE --- */
+        .projects-container {
+            position: relative;
+            margin-top: 20px; /* Space for the top row hover animation */
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            /* Height for roughly 2 rows of cards + top padding */
+            max-height: 800px; 
+            overflow: hidden;
+            transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 30px 10px 10px 10px; /* Increased top padding so hover doesn't clip */
+            position: relative;
+        }
+
+        /* Gradient fade at bottom of collapsed grid */
+        .projects-grid::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(to top, var(--bg-color), transparent);
+            pointer-events: none;
+            transition: opacity 0.4s;
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .projects-grid.is-expanded {
+            max-height: 4000px; 
+        }
+
+        .projects-grid.is-expanded::after {
+            opacity: 0;
+        }
+
+        .btn-toggle-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 2rem;
+        }
+
+        .toggle-btn {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 12px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle-btn:hover {
+            background: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        .toggle-btn .icon { transition: transform 0.3s; }
+        .toggle-btn.active .icon { transform: rotate(180deg); }
+
+        /* --- SCROLLERS (Used for University Projects) --- */
         .scroller-wrapper {
             position: relative;
             margin-bottom: 2rem;
-            transition: all 0.8s ease;
         }
 
         .fade-in-section {
             opacity: 0;
             transform: translateY(20px);
+            transition: all 0.8s ease;
         }
         .fade-in-section.is-visible {
             opacity: 1;
@@ -114,43 +184,26 @@
             overflow-x: auto;
             padding: 20px 5px;
             scroll-behavior: smooth;
-            scrollbar-width: thin;
-            scrollbar-color: var(--accent-color) var(--bg-color);
         }
 
-        .scroller::-webkit-scrollbar { height: 8px; }
-        .scroller::-webkit-scrollbar-track { background: var(--bg-color); }
-        .scroller::-webkit-scrollbar-thumb { background-color: var(--accent-color); border-radius: 4px; }
-
+        /* --- CARDS --- */
         .card {
-            min-width: 300px;
-            height: 350px;
             background: var(--card-bg);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 12px;
             overflow: hidden;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             display: flex;
             flex-direction: column;
             backdrop-filter: blur(10px);
+            height: 350px;
         }
 
         .card:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-15px) scale(1.02);
             box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
             border-color: var(--accent-color);
-        }
-
-        .card-img-placeholder {
-            height: 180px;
-            width: 100%;
-            background: linear-gradient(45deg, #1e293b, #334155);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: rgba(255,255,255,0.1);
         }
 
         .card-content {
@@ -164,7 +217,7 @@
         .card-title { font-size: 1.25rem; font-weight: bold; }
         .card-desc { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; }
 
-        /* --- LECTURE SUMMARIES --- */
+        /* --- LECTURE SUMMARIES GRID --- */
         .grid-layout {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -182,7 +235,7 @@
             cursor: pointer;
             border: 1px solid rgba(255,255,255,0.05);
             transition: all 0.2s;
-            height: 100%; /* For grid consistency */
+            height: 100%;
         }
 
         .doc-card:hover {
@@ -190,13 +243,7 @@
             border-color: var(--accent-color);
         }
 
-        /* Generic Link Reset for the Drive Card */
-        .doc-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
+        .doc-link { text-decoration: none; color: inherit; display: block; }
         .doc-icon { font-size: 1.5rem; }
 
         /* --- FOOTER --- */
@@ -211,7 +258,7 @@
         .footer-col h3 { color: var(--accent-color); margin-bottom: 1rem; }
         .contact-item { margin-bottom: 0.5rem; display: flex; align-items: center; gap: 10px; }
 
-        /* --- PROJECT TABS (Hidden Views) --- */
+        /* --- PROJECT VIEWS --- */
         .project-view {
             display: none;
             position: fixed;
@@ -229,7 +276,6 @@
         }
 
         .view-nav { margin-bottom: 2rem; }
-        
         .back-btn {
             background: transparent;
             border: 1px solid var(--accent-color);
@@ -303,6 +349,7 @@
         @media (max-width: 768px) {
             header h1 { font-size: 2.5rem; }
             .about-grid { grid-template-columns: 1fr; }
+            .project-header h1 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -321,8 +368,9 @@
 
         <section class="container fade-in-section">
             <h2 class="section-title">Personal Projects</h2>
-            <div class="scroller-wrapper">
-                <div class="scroller">
+            
+            <div class="projects-container">
+                <div class="projects-grid" id="projectsGrid">
                     
                     <div class="card" onclick="openProject('chess')">
                         <img src="images/chess.jpg" alt="Chess Game" style="width:100%; height:180px; object-fit:cover;">
@@ -348,6 +396,30 @@
                         </div>
                     </div>
 
+                    <div class="card" onclick="openProject('built-chaos')">
+                        <img src="images/BuiltChaos.png" alt="built-chaos" style="width:100%; height:180px; object-fit:cover;">
+                        <div class="card-content">
+                            <h3 class="card-title">Built Chaos</h3>
+                            <p class="card-desc">A game developed in a week for brackeys 2021 game jam.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="openProject('ShadowKnight')">
+                        <img src="images/ShadowKnight.png" alt="shadow-knight" style="width:100%; height:180px; object-fit:cover;">
+                        <div class="card-content">
+                            <h3 class="card-title">Shadow Knight</h3>
+                            <p class="card-desc">A game developed in a week for brackeys 2022 game jam.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="openProject('multiplayer')">
+                        <img src="images/multiplayer.png" alt="multiplayer" style="width:100%; height:180px; object-fit:cover;">
+                        <div class="card-content">
+                            <h3 class="card-title">Multiplayer Game</h3>
+                            <p class="card-desc">A multiplayer game following a tutorial.</p>
+                        </div>
+                    </div>
+
                     <a href="https://github.com/ido745" target="_blank" style="text-decoration: none; color: inherit;">
                         <div class="card" style="border-color: var(--accent-color); justify-content: center; align-items: center; text-align: center;">
                             <div style="font-size: 4rem;">🐙</div>
@@ -360,13 +432,19 @@
 
                 </div>
             </div>
+
+            <div class="btn-toggle-wrapper">
+                <button class="toggle-btn" id="toggleBtn" onclick="toggleProjects()">
+                    <span>Show More</span>
+                    <span class="icon">▼</span>
+                </button>
+            </div>
         </section>
 
         <section class="container fade-in-section">
             <h2 class="section-title">University Projects</h2>
             <div class="scroller-wrapper">
                 <div class="scroller">
-                    
                     <div class="card" onclick="openProject('doodle')">
                         <img src="images/doodleGuesser.png" alt="doodle" style="width:100%; height:180px; object-fit:cover;">
                         <div class="card-content">
@@ -382,7 +460,6 @@
                             <p class="card-desc">Collaborative full-stack file system (C++ backend).</p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -390,22 +467,18 @@
         <section class="container fade-in-section">
             <h2 class="section-title">Lecture Summaries</h2>
             <div class="grid-layout">
-                
                 <div class="doc-card" onclick="openPdf('assets/OS.pdf', 'Operating Systems')">
                     <div class="doc-icon">📄</div>
                     <div><h4>Operating Systems</h4><small style="color:var(--text-muted)">Click to preview</small></div>
                 </div>
-
                 <div class="doc-card" onclick="openPdf('assets/Geodif.pdf', 'Geometric and Differential Algebra')">
                     <div class="doc-icon">📄</div>
                     <div><h4>Geometric Algebra</h4><small style="color:var(--text-muted)">Click to preview</small></div>
                 </div>
-
                 <div class="doc-card" onclick="openPdf('assets/Algo.pdf', 'Algorithms')">
                     <div class="doc-icon">📄</div>
                     <div><h4>Algorithms</h4><small style="color:var(--text-muted)">Click to preview</small></div>
                 </div>
-
                 <a href="https://drive.google.com/drive/folders/1gpuSwRNl2JdiZ2krEJ1ncZrxykzLYG9R?usp=sharing" target="_blank" class="doc-link">
                     <div class="doc-card" style="border-color: var(--accent-color);">
                         <div class="doc-icon">📂</div>
@@ -415,20 +488,20 @@
                         </div>
                     </div>
                 </a>
-
             </div>
         </section>
 
-        <footer class="fade-in-section">
+        <footer>
             <div class="container about-grid">
                 <div class="footer-col">
                     <h3>About Me</h3>
-                    <p>I am a passionate CS student. I love building systems from scratch, solving complex algorithmic problems, and exploring the depths of computer graphics and AI. Working part time in BI and data science.</p>
+                    <p>I am a passionate CS student. I love building systems from scratch, solving complex algorithmic problems, and exploring the depths of computer graphics and AI.</p>
                 </div>
                 <div class="footer-col">
                     <h3>Contact</h3>
                     <div class="contact-item">📧 dodomaimon@gmail.com</div>
                     <div class="contact-item">📞 +972 556 844 806</div>
+                    <div class="contact-item">🐙 <a href="https://github.com/ido745" target="_blank">github</a></div>
                 </div>
             </div>
         </footer>
@@ -447,7 +520,8 @@
                     <span class="tech-tag">Alpha-Beta Pruning</span>
                 </div>
                 <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
-                    <a href="projects/ChessAI-main.zip" class="download-btn" download>Download Release</a>
+                    <a href="projects/ChessAI_build_12_13_25.zip" class="download-btn" download>Download Build</a>
+                    <a href="projects/ChessAI-main.zip" class="download-btn" download>Download Source</a>
                     <a href="https://github.com/ido745/ChessAI" target="_blank" class="download-btn" style="background-color: #333; color: white;">
                         View on GitHub ↗
                     </a>
@@ -516,6 +590,98 @@
                 <p>This website was built to showcase my projects. It features an interactive HTML5 Canvas background, horizontal scrolling for project cards, and a built-in PDF previewer.</p>
                 <h2>Tech Stack</h2>
                 <p>HTML5, CSS3, JavaScript (No frameworks).</p>
+            </div>
+        </div>
+    </div>
+
+     <div id="project-built-chaos" class="project-view">
+        <div class="container">
+            <div class="view-nav"><button class="back-btn" onclick="closeProject()">← Back to Home</button></div>
+            <div class="project-header">
+                <h1>Built Chaos</h1>
+                <p>A fun challange made in just a week for the Brackeys Game Jam submission of 2021. protect yourself from viruses and bugs as you fly through space!</p>
+                <p>Note: the blue screen of death at the end of the game is not real, and is just part of the game.</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
+                    <a href="projects/build_BuiltChaos.zip" class="download-btn" download>Download Build</a>
+                    <a href="https://ido745.itch.io/built-chaos" target="_blank" class="download-btn" style="background-color: #333; color: white;">
+                        View on Itch.io ↗
+                    </a>
+                </div>
+            </div>
+            <div class="project-content">
+                <h2>Some Background</h2>
+                <p>This project was made all the way back in 2021, for the Brackeys Game Jam. 
+                    The theme of the game jam was "chaos", 
+                    and the time given to build the games was a week. 
+                    This is the game i've made, where you play as a spaceship in space fighting viruses and bugs, while the game gets more chaotic the more you play it.</p>
+                
+                <h2>Technical details</h2>
+                <p>All code, assets, art and music were made by me, in the time limit of the competition.</p>
+                
+
+                <h2>How to Run</h2>
+                <ol style="margin-left: 20px; color: #cbd5e1; margin-bottom: 2rem;">
+                    <li>Download the build.</li>
+                    <li>Run <strong>Built Chaos.exe</strong>.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div id="project-ShadowKnight" class="project-view">
+        <div class="container">
+            <div class="view-nav"><button class="back-btn" onclick="closeProject()">← Back to Home</button></div>
+            <div class="project-header">
+                <h1>Shadow Knight</h1>
+                <p>Yet another brackeys game jam project. This one was really fun to make, and it's a short, story-oriented game. Feel welcome to play as the lone creature looking for a home. And good luck!</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
+                    <a href="projects/ShadowKnight.zip" class="download-btn" download>Download Build</a>
+                    <a href="https://ido745.itch.io/shadow-knight" target="_blank" class="download-btn" style="background-color: #333; color: white;">
+                        View on Itch.io ↗
+                    </a>
+                </div>
+            </div>
+            <div class="project-content">
+                <h2>Some Background</h2>
+                <p>This project is a bit different from my other projects, since I wanted to create a more story and asthetics oriented game. For the challange, I only had one week to make it. And although you can definitely tell this was made in a week, I think it came out pretty good. Feel free to try it!</p>
+                
+                <h2>Technical details</h2>
+                <p>All code, assets, art and music were made by me, in the time limit of the competition.</p>
+                
+                <h2>How to Run</h2>
+                <ol style="margin-left: 20px; color: #cbd5e1; margin-bottom: 2rem;">
+                    <li>Download the build.</li>
+                    <li>Run <strong>Shadow Knight.exe</strong>.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div id="project-multiplayer" class="project-view">
+        <div class="container">
+            <div class="view-nav"><button class="back-btn" onclick="closeProject()">← Back to Home</button></div>
+            <div class="project-header">
+                <h1>Multiplayer FPS</h1>
+                <p>A multiplayer game made by following one of Brackeys' tutorials. This is quite a large project, which i made to understand networking in video games and in general.</p>
+                 <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
+                    <a href="projects/build_multiplayer.zip" class="download-btn" download>Download Build</a>
+                </div>
+            </div>
+            <div class="project-content">
+                <h2>Project Description</h2>
+                <p>This project was made by following a tutorial a couple of years ago, and was lately refactored since some packages were no longer relevant. 
+                    This is a first person shooter, with multiple players and one arena. Everyone can open their own room and let friends play with them!</p>
+                
+                <h2>How To Play</h2>
+                <p>In order to play, first sign in or register. After you're logged in, you will be able to create a room (or join an existing one). Let your friend join the room and play together!</p>
+                <p><strong>Note: you can only play with other people in your local network.</strong></p>
+                
+
+                <h2>How to Run</h2>
+                <ol style="margin-left: 20px; color: #cbd5e1; margin-bottom: 2rem;">
+                    <li>Download the build.</li>
+                    <li>Run <strong>multiplayerGame1.exe</strong>.</li>
+                </ol>
             </div>
         </div>
     </div>
@@ -589,7 +755,6 @@
             <p>Content coming soon.</p>
         </div>
     </div>
-
     <div id="pdf-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -604,101 +769,53 @@
     </div>
 
     <script>
-        // --- HELPER: Handles the Visual Switching Only ---
+        // --- VIEW SWITCHING ---
         function switchView(viewName) {
-            // Hide everything first
             document.getElementById('home-view').style.display = 'none';
             document.querySelectorAll('.project-view').forEach(v => v.style.display = 'none');
-
-            // Show the requested view
-            if (viewName === 'home') {
-                document.getElementById('home-view').style.display = 'block';
-            } else {
-                // Try to find the specific project view
-                let projectEl = document.getElementById('project-' + viewName);
-                
-                // If not found (e.g. invalid ID), show default or fallback to home
-                if (projectEl) {
-                    projectEl.style.display = 'block';
-                } else {
-                    // Fallback for missing IDs
-                    document.getElementById('project-default').style.display = 'block';
-                }
-            }
+            if (viewName === 'home') document.getElementById('home-view').style.display = 'block';
+            else (document.getElementById('project-' + viewName) || document.getElementById('project-default')).style.display = 'block';
             window.scrollTo(0, 0);
         }
+        function openProject(id) { switchView(id); history.pushState({ view: id }, null, '#' + id); }
+        function closeProject() { if (history.state) history.back(); else { switchView('home'); history.replaceState(null, null, ' '); } }
+        window.addEventListener('popstate', (e) => switchView((e.state && e.state.view) ? e.state.view : 'home'));
+        window.addEventListener('load', () => switchView(location.hash.replace('#', '') || 'home'));
 
-        // --- 1. NAVIGATION (Clicking a Card) ---
-        function openProject(id) {
-            switchView(id);
-            history.pushState({ view: id }, null, '#' + id);
+        // --- GRID TOGGLE ---
+        function toggleProjects() {
+            const grid = document.getElementById('projectsGrid');
+            const btn = document.getElementById('toggleBtn');
+            const btnText = btn.querySelector('span');
+            grid.classList.toggle('is-expanded');
+            btn.classList.toggle('active');
+            if (grid.classList.contains('is-expanded')) btnText.innerText = "Show Less";
+            else { btnText.innerText = "Show More"; grid.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
         }
 
-        // --- 2. CLOSING (Clicking "Back to Home" button) ---
-        function closeProject() {
-            if (history.state) {
-                history.back();
-            } else {
-                switchView('home');
-                history.replaceState(null, null, ' '); 
-            }
-        }
-
-        // --- 3. BROWSER BACK BUTTON LISTENER ---
-        window.addEventListener('popstate', function(event) {
-            if (event.state && event.state.view) {
-                switchView(event.state.view);
-            } else {
-                switchView('home');
-            }
-        });
-
-        // --- 4. HANDLE REFRESH / DIRECT LINKS ---
-        window.addEventListener('load', () => {
-            const hash = location.hash.replace('#', '');
-            if (hash) {
-                switchView(hash);
-            } else {
-                switchView('home');
-            }
-        });
-
-        // --- PDF Modal Logic ---
+        // --- PDF MODAL ---
         function openPdf(file, title) {
             const modal = document.getElementById('pdf-modal');
             const frame = document.getElementById('pdf-frame');
             document.getElementById('modal-title').innerText = title;
             document.getElementById('download-link').href = file;
-            frame.src = file; 
-            modal.style.display = "flex";
+            frame.src = file; modal.style.display = "flex";
         }
+        function closePdf() { document.getElementById('pdf-modal').style.display = "none"; document.getElementById('pdf-frame').src = ""; }
+        window.onclick = function(e) { if (e.target == document.getElementById('pdf-modal')) closePdf(); }
 
-        function closePdf() {
-            document.getElementById('pdf-modal').style.display = "none";
-            document.getElementById('pdf-frame').src = "";
-        }
-
-        window.onclick = function(e) {
-            if (e.target == document.getElementById('pdf-modal')) closePdf();
-        }
-
-        // --- Visual Effects ---
+        // --- INTERSECTION OBSERVER ---
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('is-visible');
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
 
-        // Background Particles
+        // --- CANVAS BACKGROUND ---
         const canvas = document.getElementById('canvas-bg');
         const ctx = canvas.getContext('2d');
         let width, height, particles = [];
 
-        function resize() { 
-            width = canvas.width = window.innerWidth; 
-            height = canvas.height = window.innerHeight; 
-        }
+        function resize() { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; }
         window.addEventListener('resize', resize);
         resize();
 
@@ -728,23 +845,15 @@
         init();
 
         let mouse = {x: null, y: null};
-        window.addEventListener('mousemove', e => { mouse.x = e.x; mouse.y = e.y; });
+        window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
         window.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
 
         function animate() {
             ctx.clearRect(0, 0, width, height);
             particles.forEach((p, i) => {
-                p.update(); p.draw();
-                for (let j = i; j < particles.length; j++) {
-                    const dx = p.x - particles[j].x;
-                    const dy = p.y - particles[j].y;
-                    const dist = Math.sqrt(dx*dx + dy*dy);
-                    if (dist < 100) {
-                        ctx.strokeStyle = `rgba(56, 189, 248, ${1 - dist/100})`;
-                        ctx.lineWidth = 1; 
-                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
-                    }
-                }
+                p.update();
+                
+                // --- MOUSE REPULSION FEATURE ---
                 if (mouse.x) {
                     const dx = p.x - mouse.x;
                     const dy = p.y - mouse.y;
@@ -753,6 +862,18 @@
                         const force = (150 - dist) / 150;
                         p.x += (dx/dist) * force * 2;
                         p.y += (dy/dist) * force * 2;
+                    }
+                }
+
+                p.draw();
+                for (let j = i; j < particles.length; j++) {
+                    const dx = p.x - particles[j].x;
+                    const dy = p.y - particles[j].y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < 100) {
+                        ctx.strokeStyle = `rgba(56, 189, 248, ${1 - dist/100})`;
+                        ctx.lineWidth = 1; 
+                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
                     }
                 }
             });
