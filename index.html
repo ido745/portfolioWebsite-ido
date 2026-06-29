@@ -41,6 +41,18 @@
                         </div>
                     </div>
                     
+                    <div class="card" onclick="openProject('focus-blocker')">
+                        <div style="width:100%; height:180px; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+<div style="width:116px; height:116px; background:linear-gradient(145deg, #22c55e, #16a34a); border-radius:28px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.4);">
+                                <span style="font-size:3.4rem; line-height:1; filter:drop-shadow(0 1px 3px rgba(0,0,0,0.3));">🛡️</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Focus Blocker</h3>
+                            <p class="card-desc">Android distraction blocker — apps, sites, Shorts & Reels. Built with Claude Code.</p>
+                        </div>
+                    </div>
+
                     <div class="card" onclick="openProject('portfolio')">
                         <img src="images/website.png" alt="website" style="width:100%; height:180px; object-fit:cover;">
                         <div class="card-content">
@@ -173,10 +185,12 @@
                     <span class="tech-tag">Alpha-Beta Pruning</span>
                 </div>
                 <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
-                    <a href="projects/ChessAI_build_12_13_25.zip" class="download-btn" download>Download Build</a>
-                    <a href="projects/ChessAI-main.zip" class="download-btn" download>Download Source</a>
+                    <a href="projects/ChessAI_build_30.6.26.zip" class="download-btn" download>Download Windows Build</a>
                     <a href="https://github.com/ido745/ChessAI" target="_blank" class="download-btn" style="background-color: #333; color: white;">
-                        View on GitHub ↗
+                        View on GitHub 🐙↗
+                    </a>
+                    <a href="https://lichess.org/@/ZobristZebra" target="_blank" class="download-btn" style="background-color: #911d65; color: white;">
+                        View Bot Profile ↗
                     </a>
                 </div>
             </div>
@@ -409,6 +423,92 @@
                     <li><strong>Authentication:</strong> Secure user registration and login system with token-based session management.</li>
                     <li><strong>File System:</strong> Support for nested directories, file metadata tracking, and intuitive upload/download progress.</li>
                 </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="project-focus-blocker" class="project-view">
+        <div class="container">
+            <div class="view-nav"><button class="back-btn" onclick="closeProject()">← Back to Home</button></div>
+            <div class="project-header">
+                <h1>Focus Blocker</h1>
+                <p>An Android productivity app I built to fight digital distraction — on my own terms.</p>
+                <div style="margin-top: 15px;">
+                    <span class="tech-tag">Android</span>
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">Accessibility API</span>
+                    <span class="tech-tag">Claude Code</span>
+                </div>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
+                    <a href="https://github.com/ido745/FocusBlocker_v1.git" target="_blank" class="download-btn" style="background-color: #333; color: white;">
+                        View on GitHub 🐙↗
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-content">
+
+                <h2>What Is It?</h2>
+                <p>
+                    Focus Blocker is a personal Android app I developed to reclaim control over screen time.
+                    The goal was simple: build something that actually works against the tricks apps use to keep you hooked,
+                    and put all the power in the user's hands — not a subscription service's hands.
+                </p>
+
+                <h2>Screenshots</h2>
+                <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom:2rem;">
+                    <div style="text-align:center;">
+                        <div style="background:#0f172a; border-radius:18px; padding:8px; border:1px solid rgba(255,255,255,0.1); box-shadow:0 8px 32px rgba(0,0,0,0.4); display:inline-block;">
+                            <img src="images/FocusBlocker_mainScreen.jpeg" alt="Main screen" style="width:180px; border-radius:12px; display:block;">
+                        </div>
+                        <p style="margin-top:10px; font-size:0.85rem; color:var(--text-muted);">Main Screen</p>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="background:#0f172a; border-radius:18px; padding:8px; border:1px solid rgba(255,255,255,0.1); box-shadow:0 8px 32px rgba(0,0,0,0.4); display:inline-block;">
+                            <img src="images/FocusBlocker_blocking.jpeg" alt="Blocking screen" style="width:180px; border-radius:12px; display:block;">
+                        </div>
+                        <p style="margin-top:10px; font-size:0.85rem; color:var(--text-muted);">Active Block</p>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="background:#0f172a; border-radius:18px; padding:8px; border:1px solid rgba(255,255,255,0.1); box-shadow:0 8px 32px rgba(0,0,0,0.4); display:inline-block;">
+                            <img src="images/FocusBlocker_motivationPage.jpeg" alt="Motivation page" style="width:180px; border-radius:12px; display:block;">
+                        </div>
+                        <p style="margin-top:10px; font-size:0.85rem; color:var(--text-muted);">Motivation Page</p>
+                    </div>
+                </div>
+
+                <h2>Blocking Capabilities</h2>
+                <ul>
+                    <li><strong>App Blocking:</strong> Block any installed app on the device. Once blocked, opening it redirects you away immediately.</li>
+                    <li><strong>Website Blocking:</strong> Add specific domains to a blocklist so they stay unreachable in the browser.</li>
+                    <li><strong>Keyword Blocking:</strong> Block browsing to any page whose URL or title contains a configured keyword — useful for catching things a static list would miss.</li>
+                    <li><strong>YouTube Shorts &amp; Instagram Reels:</strong> Detects and exits the infinite-scroll short-form video feeds specifically, without blocking the rest of those apps.</li>
+                </ul>
+
+                <h2>Protection Layers</h2>
+                <p>Blocking distractions is easy. <em>Keeping</em> them blocked when you're tempted is the hard part. Focus Blocker has several layers to make impulsive removal harder:</p>
+                <ul>
+                    <li><strong>Deletion Protection:</strong> Optional safeguard that prevents accidentally removing a block rule in a weak moment.</li>
+                    <li><strong>Settings Protection:</strong> Locks the app's own permission settings, so you can't quietly revoke its Accessibility permissions without going through a deliberate process.</li>
+                    <li><strong>24-Hour Lock:</strong> The strictest mode. If enabled, any attempt to remove a permission or rule is queued — you have to wait a full 24 hours before the change takes effect. This gives your future self a real cooling-off period.</li>
+                </ul>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Every protection layer is opt-in. You decide exactly how strict you want to be.</p>
+
+                <h2>Motivation Page</h2>
+                <p>
+                    For moments when discipline is running low, the app can surface a motivation page — showing videos or messages you've set up in advance for exactly these moments.
+                    It's a small nudge, but sometimes that's all it takes.
+                </p>
+
+                <h2>Built with Claude Code</h2>
+                <div style="background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.3); border-radius: 10px; padding: 20px; margin: 10px 0 20px 0;">
+                    <p style="margin:0;">
+                        This project was an experiment as much as a tool. <strong>Virtually the entire codebase was written by Claude Code</strong> — Anthropic's AI coding assistant —
+                        with me directing the architecture, features, and decisions. The goal was to see what was actually achievable when using AI as a full development partner rather than just an autocomplete.
+                        The answer: a fully functional, production-quality Android app with a feature set I wouldn't have shipped anywhere near as fast on my own.
+                    </p>
+                </div>
+
             </div>
         </div>
     </div>
