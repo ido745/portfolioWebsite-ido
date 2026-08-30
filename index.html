@@ -41,6 +41,14 @@
                         </div>
                     </div>
                     
+                    <div class="card" onclick="openProject('greater-good')">
+                        <img src="images/TheGreaterGood.jpeg" alt="The Greater Good" style="width:100%; height:180px; object-fit:cover;">
+                        <div class="card-content">
+                            <h3 class="card-title">The Greater Good</h3>
+                            <p class="card-desc">A game developed in a week for brackeys 2026 game jam.</p>
+                        </div>
+                    </div>
+
                     <div class="card" onclick="openProject('focus-blocker')">
                         <div style="width:100%; height:180px; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
 <div style="width:116px; height:116px; background:linear-gradient(145deg, #22c55e, #16a34a); border-radius:28px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.4);">
@@ -268,6 +276,62 @@
         </div>
     </div>
 
+    <div id="project-greater-good" class="project-view">
+        <div class="container">
+            <div class="view-nav"><button class="back-btn" onclick="closeProject()">← Back to Home</button></div>
+            <div class="project-header">
+                <h1>The Greater Good</h1>
+                <p>Earth is freezing. You are the astronaut sent to a distant alien world to ask for help — and the world that took you in has exactly what your planet needs.</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
+                    <a href="projects/TheGreaterGood_build2.zip" class="download-btn" download>Download Build</a>
+                    <a href="https://ido745.itch.io/the-greater-good" target="_blank" class="download-btn itch-btn">
+                        Play on Itch.io ↗
+                    </a>
+                </div>
+            </div>
+            <div class="project-content">
+                <h2>The Story</h2>
+                <p>Earth is dying under an unstoppable ice age, and humanity's last hope is a research mission to a far away alien planet. You are sent there to collaborate with its people — to learn from them, and to find a way to save your home.</p>
+                <p>The aliens welcome you. They trust you, open their hearts to you, and give you everything they have to help you succeed. And then a new transmission arrives from Earth:</p>
+                <ul style="margin-left: 20px; color: #cbd5e1; margin-bottom: 2rem;">
+                    <li>We have no time for research.</li>
+                    <li>Humanity comes first.</li>
+                    <li>Steal the energy source.</li>
+                </ul>
+                <p>You betray them. You take their energy source, and you save your planet — but at what cost?</p>
+
+                <h2>Some Background</h2>
+                <p>This game was my submission to the Brackeys Game Jam 2026.2. Like my other jam games, it was built from scratch within the time limit of the competition. I wanted the gameplay to make the player feel the weight of the choice rather than just narrate it — you spend the game earning the aliens' trust, which is exactly what makes the ending hurt.</p>
+
+                <h2>Screenshots</h2>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px; align-items:start; margin-bottom:2rem;">
+                    <figure style="margin:0;">
+                        <img src="images/TheGreaterGood_screenshot.jpeg" alt="The aliens who take you in" style="width:100%; height:auto; display:block; border-radius:8px; border:1px solid rgba(255,255,255,0.1); image-rendering: pixelated;">
+                        <figcaption style="margin-top:10px; font-size:0.85rem; color:var(--text-muted); text-align:center;">Friendly alien animals</figcaption>
+                    </figure>
+                    <figure style="margin:0;">
+                        <img src="images/TheGreaterGood_screenshot2.jpeg" alt="Exploring the alien caves" style="width:100%; height:auto; display:block; border-radius:8px; border:1px solid rgba(255,255,255,0.1); image-rendering: pixelated;">
+                        <figcaption style="margin-top:10px; font-size:0.85rem; color:var(--text-muted); text-align:center;">Exploring the alien caves</figcaption>
+                    </figure>
+                    <figure style="margin:0;">
+                        <img src="images/TheGreaterGood_screenshot3.jpeg" alt="The energy source" style="width:100%; height:auto; display:block; border-radius:8px; border:1px solid rgba(255,255,255,0.1); image-rendering: pixelated;">
+                        <figcaption style="margin-top:10px; font-size:0.85rem; color:var(--text-muted); text-align:center;">The energy source</figcaption>
+                    </figure>
+                    <figure style="margin:0;">
+                        <img src="images/TheGreaterGood_screenshot4.jpeg" alt="Fighting your way out" style="width:100%; height:auto; display:block; border-radius:8px; border:1px solid rgba(255,255,255,0.1); image-rendering: pixelated;">
+                        <figcaption style="margin-top:10px; font-size:0.85rem; color:var(--text-muted); text-align:center;">Fighting your way out</figcaption>
+                    </figure>
+                </div>
+
+                <h2>How to Play</h2>
+                <ol style="margin-left: 20px; color: #cbd5e1; margin-bottom: 2rem;">
+                    <li>Play it in the browser on Itch.io, or download the Windows build.</li>
+                    <li>Extract the zip and run <strong>The Greater Good.exe</strong>.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
      <div id="project-built-chaos" class="project-view">
         <div class="container">
             <div class="view-nav"><button class="back-btn" onclick="closeProject()">← Back to Home</button></div>
@@ -277,7 +341,7 @@
                 <p>Note: the blue screen of death at the end of the game is not real, and is just part of the game.</p>
                 <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
                     <a href="projects/build_BuiltChaos.zip" class="download-btn" download>Download Build</a>
-                    <a href="https://ido745.itch.io/built-chaos" target="_blank" class="download-btn" style="background-color: #333; color: white;">
+                    <a href="https://ido745.itch.io/built-chaos" target="_blank" class="download-btn itch-btn">
                         View on Itch.io ↗
                     </a>
                 </div>
@@ -310,7 +374,7 @@
                 <p>Yet another brackeys game jam project. This one was really fun to make, and it's a short, story-oriented game. Feel welcome to play as the lone creature looking for a home. And good luck!</p>
                 <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
                     <a href="projects/ShadowKnight.zip" class="download-btn" download>Download Build</a>
-                    <a href="https://ido745.itch.io/shadow-knight" target="_blank" class="download-btn" style="background-color: #333; color: white;">
+                    <a href="https://ido745.itch.io/shadow-knight" target="_blank" class="download-btn itch-btn">
                         View on Itch.io ↗
                     </a>
                 </div>

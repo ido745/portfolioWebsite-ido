@@ -302,6 +302,12 @@ footer {
 }
 .download-btn:hover { background: var(--accent-color); transform: scale(1.05); }
 
+.download-btn.itch-btn {
+    background: #7c3aed;
+    color: #fff;
+}
+.download-btn.itch-btn:hover { background: #9061f9; }
+
 .project-content { max-width: 800px; font-size: 1.1rem; color: #cbd5e1; }
 .project-content h2 { color: var(--text-main); margin-top: 2rem; margin-bottom: 1rem; }
 .tech-tag {
